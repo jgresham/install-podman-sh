@@ -33,3 +33,8 @@ jobs:
       - name: Podman info
         run: |
           podman info
+
+
+      - name: Podman run contperf
+        run: |
+          podman run ghcr.io/nicenode/speedometer
