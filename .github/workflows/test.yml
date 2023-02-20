@@ -25,3 +25,11 @@ jobs:
       - name: install.sh Podman
         run: |
           ./install.sh
+      
+      - name: Podman version
+        run: |
+          podman -v
+
+      - name: Podman info
+        run: |
+          podman info
