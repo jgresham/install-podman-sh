@@ -18,9 +18,9 @@ ls /opt/podman/bin
 export PATH="/opt/podman/bin:$PATH"
 echo $PATH
 
-podman version
-podman machine init --now
-podman version
+# podman version
+# podman machine init --now
+# podman version
 
 source ~/.bash_profile
 # echo $PATH

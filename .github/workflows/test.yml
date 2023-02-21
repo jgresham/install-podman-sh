@@ -31,6 +31,7 @@ jobs:
               echo "No Windows in install-podman-sh yet"
           elif [ "$RUNNER_OS" == "macOS" ]; then
               ./install-mac.sh
+              echo "/opt/podman/bin" >> $GITHUB_PATH
           else
               echo "$RUNNER_OS not supported"
               exit 1
@@ -43,7 +44,6 @@ jobs:
       - name: Podman info
         run: |
           podman info
-
 
       - name: Podman run speedometer cpu
         run: |
