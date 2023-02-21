@@ -25,7 +25,7 @@ jobs:
 
       # https://docs.github.com/en/actions/learn-github-actions/variables for GITHUB_PATH
       - name: install.sh Podman
-        run: .\install-windows.sh
+        run: ./install-windows.sh
         # run: |
         #   if [ "$RUNNER_OS" == "Linux" ]; then
         #       ./install-ubuntu.sh
