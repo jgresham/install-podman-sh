@@ -52,7 +52,7 @@ jobs:
       # On macOS, podman machine init is required before version and info work
       - name: Podman machine init (macOS and Windows)
         run: |
-          C:\Program Files\Red Hat\Podman\podman.exe machine init
+          & 'C:\Program Files\Red Hat\Podman\podman.exe' machine init
           podman.exe machine start
         # run: |
         #   if [ "$RUNNER_OS" == "Windows" ]; then
