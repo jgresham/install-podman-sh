@@ -27,7 +27,7 @@ jobs:
       - name: install.sh Podman
         run: |
           Invoke-WebRequest -Uri https://github.com/containers/podman/releases/download/v4.4.1/podman-v4.4.1.msi -OutFile .\podman-v4.4.1.msi
-          msiexec /a .\podman-v4.4.1.msi /qn /lv .\log.txt
+          msiexec /i .\podman-v4.4.1.msi /qn /lv .\log.txt
           bash -c "cat log.txt"
         # run: |
         #   if [ "$RUNNER_OS" == "Linux" ]; then
