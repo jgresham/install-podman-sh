@@ -25,18 +25,19 @@ jobs:
 
       # https://docs.github.com/en/actions/learn-github-actions/variables for GITHUB_PATH
       - name: install.sh Podman
-        run: |
-          if [ "$RUNNER_OS" == "Linux" ]; then
-              ./install-ubuntu.sh
-          elif [ "$RUNNER_OS" == "Windows" ]; then
-             .\install-windows.sh
-          elif [ "$RUNNER_OS" == "macOS" ]; then
-              ./install-mac.sh
-              echo "/opt/podman/bin" >> $GITHUB_PATH
-          else
-              echo "$RUNNER_OS not supported"
-              exit 1
-          fi
+        run: .\install-windows.sh
+        # run: |
+        #   if [ "$RUNNER_OS" == "Linux" ]; then
+        #       ./install-ubuntu.sh
+        #   elif [ "$RUNNER_OS" == "Windows" ]; then
+        #      .\install-windows.sh
+        #   elif [ "$RUNNER_OS" == "macOS" ]; then
+        #       ./install-mac.sh
+        #       echo "/opt/podman/bin" >> $GITHUB_PATH
+        #   else
+        #       echo "$RUNNER_OS not supported"
+        #       exit 1
+        #   fi
 
       # On macOS, podman machine init is required before version and info work
       - name: Podman machine init (macOS and Windows)
