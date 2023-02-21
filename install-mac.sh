@@ -14,3 +14,6 @@ fi
 
 # Install Podman
 sudo installer -pkg podman-installer-macos*.pkg -target / -verbose
+
+# Cleanup
+rm podman-installer*.pkg
