@@ -23,12 +23,14 @@ jobs:
       #     node-version: 16
       #     cache: npm
 
+      # msiexec /i .\podman-v4.4.1.msi /qn /lv .\log.txt
+      # Windows try: https://github.com/actions/runner/issues/408
       # https://docs.github.com/en/actions/learn-github-actions/variables for GITHUB_PATH
       - name: install.sh Podman
         run: |
           Invoke-WebRequest -Uri https://github.com/containers/podman/releases/download/v4.4.1/podman-v4.4.1.msi -OutFile .\podman-v4.4.1.msi
-          msiexec /i .\podman-v4.4.1.msi /qn /lv .\log.txt
-          bash -c "cat log.txt"
+          Start-Process .\podman-v4.4.1.msi -ArgumentList "/qn /lv log.txt"
+          Get-Content log.txt
         # run: |
         #   if [ "$RUNNER_OS" == "Linux" ]; then
         #       ./install-ubuntu.sh
