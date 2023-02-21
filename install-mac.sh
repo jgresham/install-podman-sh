@@ -12,12 +12,13 @@ else
   curl -LO https://github.com/containers/podman/releases/download/v4.4.1/podman-installer-macos-amd64.pkg
 fi
 
-# Install Podman
+# Install Podman (installs at /opt/podman)
 sudo installer -pkg podman-installer-macos*.pkg -target / -verbose
+export PATH="/opt/podman:$PATH"
 echo $PATH
 
-source ~/.bash_profile
-echo $PATH
+# source ~/.bash_profile
+# echo $PATH
 
 # Cleanup
 rm podman-installer*.pkg
