@@ -10,8 +10,8 @@ jobs:
 
     strategy:
       matrix:
-        # os: [macos-latest]
-        os: [ubuntu-latest, macos-latest]
+        os: [windows-latest]
+        # os: [ubuntu-latest, macos-latest]
 
     steps:
       - name: Check out Git repository
@@ -29,7 +29,7 @@ jobs:
           if [ "$RUNNER_OS" == "Linux" ]; then
               ./install-ubuntu.sh
           elif [ "$RUNNER_OS" == "Windows" ]; then
-              echo "No Windows in install-podman-sh yet"
+             .\install-windows.sh
           elif [ "$RUNNER_OS" == "macOS" ]; then
               ./install-mac.sh
               echo "/opt/podman/bin" >> $GITHUB_PATH
@@ -42,7 +42,8 @@ jobs:
       - name: Podman machine init (macOS and Windows)
         run: |
           if [ "$RUNNER_OS" == "Windows" ]; then
-              echo "No Windows in install-podman-sh yet"
+              podman machine init
+              podman machine start
           elif [ "$RUNNER_OS" == "macOS" ]; then
               podman machine init
               podman machine start
