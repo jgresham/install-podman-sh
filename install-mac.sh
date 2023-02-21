@@ -18,6 +18,8 @@ ls /opt/podman/bin
 export PATH="/opt/podman/bin:$PATH"
 echo $PATH
 
+podman version
+
 source ~/.bash_profile
 # echo $PATH
 

@@ -37,7 +37,7 @@ jobs:
       
       - name: Podman version
         run: |
-          podman -v
+          podman version
 
       - name: Podman info
         run: |
