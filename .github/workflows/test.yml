@@ -42,15 +42,18 @@ jobs:
       # On macOS, podman machine init is required before version and info work
       - name: Podman machine init (macOS and Windows)
         run: |
-          if [ "$RUNNER_OS" == "Windows" ]; then
-              podman machine init
-              podman machine start
-          elif [ "$RUNNER_OS" == "macOS" ]; then
-              podman machine init
-              podman machine start
-          else
-              exit 0
-          fi
+          podman machine init
+          podman machine start
+        # run: |
+        #   if [ "$RUNNER_OS" == "Windows" ]; then
+        #       podman machine init
+        #       podman machine start
+        #   elif [ "$RUNNER_OS" == "macOS" ]; then
+        #       podman machine init
+        #       podman machine start
+        #   else
+        #       exit 0
+        #   fi
 
       - name: Podman version
         run: |
