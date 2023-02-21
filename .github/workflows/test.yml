@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos-latest]
 
     steps:
       - name: Check out Git repository
@@ -24,7 +24,16 @@ jobs:
 
       - name: install.sh Podman
         run: |
-          ./install.sh
+          if [ "$RUNNER_OS" == "Linux" ]; then
+              ./install-ubuntu.sh
+          elif [ "$RUNNER_OS" == "Windows" ]; then
+              echo "No Windows in install-podman-sh yet"
+          elif [ "$RUNNER_OS" == "macOS" ]; then
+              ./install-mac.sh
+          else
+              echo "$RUNNER_OS not supported"
+              exit 1
+          fi
       
       - name: Podman version
         run: |
@@ -35,6 +44,6 @@ jobs:
           podman info
 
 
-      - name: Podman run contperf
+      - name: Podman run speedometer cpu
         run: |
-          podman run ghcr.io/nicenode/speedometer
+          podman run ghcr.io/nicenode/speedometer -t time
