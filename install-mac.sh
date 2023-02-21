@@ -7,10 +7,8 @@ if [[ $(uname -m) == "arm64" ]]; then
   curl -LO https://github.com/containers/podman/releases/download/v4.4.1/podman-installer-macos-arm64.pkg
 else
   # Download the latest Podman release for macOS x86_64
-  curl -LO https://github.com/containers/podman/releases/download/v4.4.1/podman-installer-macos.pkg
+  curl -LO https://github.com/containers/podman/releases/download/v4.4.1/podman-installer-macos-amd64.pkg
 fi
-
-# curl -LO https://github.com/containers/podman/releases/download/v4.4.1/podman-installer-macos-arm64.pkg
 
 # Install Podman
 sudo installer -pkg podman-installer-macos*.pkg -target / -verbose
