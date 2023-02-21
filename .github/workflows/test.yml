@@ -50,10 +50,12 @@ jobs:
         #   fi
 
       # On macOS, podman machine init is required before version and info work
+      # & 'C:\Program Files\RedHat\Podman\podman.exe' machine init
+      # Github actions don't support WSL2
       - name: Podman machine init (macOS and Windows)
         run: |
-          & 'C:\Program Files\RedHat\Podman\podman.exe' machine init
-          podman.exe machine start
+          & 'C:\Program Files\RedHat\Podman\podman.exe' -v
+
         # run: |
         #   if [ "$RUNNER_OS" == "Windows" ]; then
         #       podman machine init
