@@ -1,6 +1,8 @@
 # remove any previously downloaded installer
 rm podman-installer*.pkg
 
+echo $PATH
+
 # Check if the macOS system is running on arm64 architecture
 if [[ $(uname -m) == "arm64" ]]; then
   # Download the latest Podman release for macOS arm64
@@ -12,6 +14,10 @@ fi
 
 # Install Podman
 sudo installer -pkg podman-installer-macos*.pkg -target / -verbose
+echo $PATH
+
+source ~/.bash_profile
+echo $PATH
 
 # Cleanup
 rm podman-installer*.pkg
