@@ -24,6 +24,7 @@ jobs:
       #     cache: npm
 
       # msiexec /i .\podman-v4.4.1.msi /qn /lv .\log.txt
+      # add to Start-Process? -WindowStyle Hidden
       # Windows try: https://github.com/actions/runner/issues/408
       # https://docs.github.com/en/actions/learn-github-actions/variables for GITHUB_PATH
       - name: install.sh Podman
@@ -31,7 +32,9 @@ jobs:
           Invoke-WebRequest -Uri https://github.com/containers/podman/releases/download/v4.4.1/podman-v4.4.1.msi -OutFile .\podman-v4.4.1.msi
           Start-Process .\podman-v4.4.1.msi -ArgumentList "/qn /lv log.txt" -Wait
           Get-Content log.txt
+          $env:Path
           echo ";C:\Program Files\Red Hat\Podman\" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          $env:Path
 
         # run: |
         #   if [ "$RUNNER_OS" == "Linux" ]; then
