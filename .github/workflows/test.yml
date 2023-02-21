@@ -55,8 +55,8 @@ jobs:
       - name: Podman machine init (macOS and Windows)
         run: |
           $env:GITHUB_PATH
-          podman machine init
-          podman machine start
+          podman.exe machine init
+          podman.exe machine start
         # run: |
         #   if [ "$RUNNER_OS" == "Windows" ]; then
         #       podman machine init
@@ -70,7 +70,7 @@ jobs:
 
       - name: Podman version
         run: |
-          podman version
+          podman.exe version
 
       - name: Podman info
         run: |
