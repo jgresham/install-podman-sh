@@ -32,14 +32,16 @@ jobs:
           elif [ "$RUNNER_OS" == "macOS" ]; then
               ./install-mac.sh
               echo "/opt/podman/bin" >> $GITHUB_PATH
+              ls
+              pwd
           else
               echo "$RUNNER_OS not supported"
               exit 1
           fi
       
-      - name: Podman version
-        run: |
-          podman version
+      # - name: Podman version
+      #   run: |
+      #     podman version
 
       - name: Podman info
         run: |
