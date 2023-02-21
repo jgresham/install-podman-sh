@@ -14,7 +14,7 @@ fi
 
 # Install Podman (installs at /opt/podman)
 sudo installer -pkg podman-installer-macos*.pkg -target / -verbose
-export PATH="/opt/podman:$PATH"
+export PATH="/opt/podman/bin:$PATH"
 echo $PATH
 
 # source ~/.bash_profile
