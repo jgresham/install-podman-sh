@@ -44,7 +44,8 @@ jobs:
           if [ "$RUNNER_OS" == "Windows" ]; then
               echo "No Windows in install-podman-sh yet"
           elif [ "$RUNNER_OS" == "macOS" ]; then
-              podman machine init --now
+              podman machine init
+              podman machine start
           else
               exit 0
           fi

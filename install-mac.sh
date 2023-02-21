@@ -1,5 +1,10 @@
 # remove any previously downloaded installer
 rm podman-installer*.pkg
+# https://stackoverflow.com/questions/72562644/podman-on-mac-throws-error-when-running-podman-machine-init/72571826#72571826
+rm -rf ~/.config/containers/
+rm -rf ~/.local/share/containers
+rm ~/.ssh/podman*
+
 
 echo $PATH
 
@@ -15,13 +20,14 @@ else
 fi
 
 # Install Podman (installs at /opt/podman)
-installer -pkg podman-installer-macos*.pkg -target / -verbose
+sudo installer -pkg podman-installer-macos*.pkg -target / -verbose
 # ls /opt/podman/bin
 # export PATH="/opt/podman/bin:$PATH"
 # echo $PATH
 
 # podman version
-podman machine init --now
+podman machine init
+podman machine start
 # podman version
 
 # source ~/.bash_profile
