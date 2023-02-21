@@ -15,13 +15,13 @@ else
 fi
 
 # Install Podman (installs at /opt/podman)
-sudo installer -pkg podman-installer-macos*.pkg -target / -verbose
+installer -pkg podman-installer-macos*.pkg -target / -verbose
 # ls /opt/podman/bin
 # export PATH="/opt/podman/bin:$PATH"
 # echo $PATH
 
 # podman version
-# podman machine init --now
+podman machine init --now
 # podman version
 
 # source ~/.bash_profile
