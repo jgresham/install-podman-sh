@@ -32,8 +32,8 @@ jobs:
         run: |
           Invoke-WebRequest -Uri https://github.com/containers/podman/releases/download/v4.4.1/podman-v4.4.1.msi -OutFile .\podman-v4.4.1.msi
           Start-Process .\podman-v4.4.1.msi -ArgumentList "/qn /lv log.txt" -Wait
-          echo ";C:\\Program Files\\Red Hat\Podman\\" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          $env:Path += ";C:\\Program Files\\Red Hat\Podman\\"
+          echo ";C:\Program Files\Red Hat\Podman\" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          $env:Path += ";C:\Program Files\Red Hat\Podman\"
           $env:Path
 
         # run: |
@@ -52,7 +52,10 @@ jobs:
       # On macOS, podman machine init is required before version and info work
       - name: Podman machine init (macOS and Windows)
         run: |
-          & 'C:\Program Files\Red Hat\Podman\podman.exe' machine init
+          $env:Path
+          $env:Path += ";C:\Program Files\Red Hat\Podman\"
+          podman machine init
+          & 'C:\Program Files\Red Hat\Podman\podman.exe' podman machine init
           podman.exe machine start
         # run: |
         #   if [ "$RUNNER_OS" == "Windows" ]; then
