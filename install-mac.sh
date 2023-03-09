@@ -10,11 +10,11 @@ rm -v ~/.ssh/podman*
 if [[ $(uname -m) == "arm64" ]]; then
   echo "Downloading arm64 Podman"
   # Download the latest Podman release for macOS arm64
-  curl -LO https://github.com/containers/podman/releases/download/v4.4.1/podman-installer-macos-arm64.pkg
+  curl -LO https://github.com/containers/podman/releases/download/v4.4.2/podman-installer-macos-arm64.pkg
 else
   echo "Downloading x86_64 Podman"
   # Download the latest Podman release for macOS x86_64
-  curl -LO https://github.com/containers/podman/releases/download/v4.4.1/podman-installer-macos-amd64.pkg
+  curl -LO https://github.com/containers/podman/releases/download/v4.4.2/podman-installer-macos-amd64.pkg
 fi
 
 # Install Podman (installs at /opt/podman)
