@@ -18,18 +18,19 @@ jobs:
 
       - name: install.sh Podman
         run: |
-          ./install-mac.sh
+          time ./install-mac.sh
           echo "/opt/podman/bin" >> $GITHUB_PATH
+          podman version
 
       # On macOS, podman machine init is required before version and info work
       - name: Podman machine init (macOS and Windows)
         run: |
-          podman machine init
-          podman machine start
+          time podman machine init
+          time podman machine start
 
       - name: Podman version
         run: |
-          podman.exe version
+          podman version
 
       - name: Podman info
         run: |

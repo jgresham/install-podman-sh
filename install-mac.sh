@@ -6,6 +6,14 @@ rm -rfv ~/.config/containers/
 rm -rfv ~/.local/share/containers
 rm -v ~/.ssh/podman*
 
+# Print sys info
+# macOS
+num_cpus=$(sysctl -n hw.ncpu)
+total_mem=$(sysctl -n hw.memsize)
+total_mem_mb=$((total_mem / 1024 / 1024))
+echo "Number of CPUs: $num_cpus"
+echo "Total Memory: ${total_mem_mb} MB"
+
 # Download the Podman version for macOS arm64/amd64
 PODMAN_VERSION=4.8.2
 
