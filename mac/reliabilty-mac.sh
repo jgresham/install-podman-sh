@@ -4,12 +4,12 @@
 REPEAT_COUNT=5
 
 # Podman machine name
-MACHINE_NAME="podman-machine-default"
+# MACHINE_NAME="podman-machine-default"
 
 # Start and stop the machine
 for i in $(seq 1 $REPEAT_COUNT); do
     echo "Attempt $i: Starting Podman machine..."
-    podman machine start "$MACHINE_NAME"
+    podman machine start
 
     if [ $? -ne 0 ]; then
         echo "Failed to start Podman machine on attempt $i."
@@ -19,7 +19,7 @@ for i in $(seq 1 $REPEAT_COUNT); do
     echo "Podman machine started successfully."
 
     echo "Stopping Podman machine..."
-    podman machine stop "$MACHINE_NAME"
+    podman machine stop
 
     if [ $? -ne 0 ]; then
         echo "Failed to stop Podman machine on attempt $i."

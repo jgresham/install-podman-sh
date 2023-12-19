@@ -18,13 +18,13 @@ jobs:
 
       - name: install.sh Podman
         run: |
-          time ./install-mac.sh
+          time ./mac/install-mac.sh
           echo "/opt/podman/bin" >> $GITHUB_PATH
 
       # On macOS, podman machine init is required before version and info work
       - name: Podman machine init
         run: |
-          time podman machine init
+          ./mac/machine-init.sh
 
       - name: Podman machine start
         run: |
@@ -52,6 +52,6 @@ jobs:
           time podman machine stop
 
       # The reliability test
-      - name: Run BenchBuddy eth-node test
+      - name: Run Podman reliability test
         run: |
-          time ./reliabilty-mac.sh
+          time ./mac/reliabilty-mac.sh

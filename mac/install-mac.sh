@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # remove any previously downloaded installer
 rm -v podman-installer*.pkg
 # remove previous installation config (only do for fresh install)
@@ -6,8 +8,7 @@ rm -rfv ~/.config/containers/
 rm -rfv ~/.local/share/containers
 rm -v ~/.ssh/podman*
 
-# Print sys info
-# macOS
+# Print sys info (macOS)
 num_cpus=$(sysctl -n hw.ncpu)
 total_mem=$(sysctl -n hw.memsize)
 total_mem_mb=$((total_mem / 1024 / 1024))
