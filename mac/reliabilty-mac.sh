@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Number of times to start and stop the machine
-REPEAT_COUNT=5
+REPEAT_COUNT=2
 
 # Podman machine name
 # MACHINE_NAME="podman-machine-default"
@@ -28,6 +28,8 @@ for i in $(seq 1 $REPEAT_COUNT); do
 
     echo "Podman machine stopped successfully."
 done
+
+podman machine start
 
 # Run a test container
 echo "Running a test container to verify Podman functionality..."

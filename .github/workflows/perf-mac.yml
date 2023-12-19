@@ -16,42 +16,46 @@ jobs:
       - name: Check out Git repository
         uses: actions/checkout@v4
 
-      - name: install.sh Podman
-        run: |
-          time ./mac/install-mac.sh
-          echo "/opt/podman/bin" >> $GITHUB_PATH
-
-      # On macOS, podman machine init is required before version and info work
       - name: Podman machine init
         run: |
-          ./mac/machine-init.sh
+          ./mac/all-steup-and-tests.sh
 
-      - name: Podman machine start
-        run: |
-          time podman machine start
+      # - name: install.sh Podman
+      #   run: |
+      #     time ./mac/install-mac.sh
+      #     echo "/opt/podman/bin" >> $GITHUB_PATH
 
-      - name: Podman version
-        run: |
-          podman version
+      # # On macOS, podman machine init is required before version and info work
+      # - name: Podman machine init
+      #   run: |
+      #     ./mac/machine-init.sh
 
-      - name: Podman info
-        run: |
-          podman info
+      # - name: Podman machine start
+      #   run: |
+      #     time podman machine start
 
-      - name: Pull BenchBuddy
-        run: |
-          time podman pull ghcr.io/nicenode/benchbuddy
+      # - name: Podman version
+      #   run: |
+      #     podman version
 
-      # The performance test
-      - name: Run BenchBuddy eth-node test
-        run: |
-          time podman run ghcr.io/nicenode/benchbuddy -r eth-node -f json
+      # - name: Podman info
+      #   run: |
+      #     podman info
 
-      - name: Podman machine stop
-        run: |
-          time podman machine stop
+      # - name: Pull BenchBuddy
+      #   run: |
+      #     time podman pull ghcr.io/nicenode/benchbuddy
 
-      # The reliability test
-      - name: Run Podman reliability test
-        run: |
-          time ./mac/reliabilty-mac.sh
+      # # The performance test
+      # - name: Run BenchBuddy eth-node test
+      #   run: |
+      #     time podman run ghcr.io/nicenode/benchbuddy -r eth-node -f json
+
+      # - name: Podman machine stop
+      #   run: |
+      #     time podman machine stop
+
+      # # The reliability test
+      # - name: Run Podman reliability test
+      #   run: |
+      #     time ./mac/reliabilty-mac.sh
