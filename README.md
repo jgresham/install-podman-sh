@@ -17,6 +17,10 @@ The primary purpose of this repo is to performance test different versions of Po
 1. Assign different resources to machine
 2. Default is 2 cores and 2GB, but GitHub Runner has 4 cpus and 14 GB memory
 
+### Upload/save results to a DB
+
+1. Save results and show in simple dashboard
+
 ## Install scripts
 
 ### Mac

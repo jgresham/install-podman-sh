@@ -22,9 +22,12 @@ jobs:
           echo "/opt/podman/bin" >> $GITHUB_PATH
 
       # On macOS, podman machine init is required before version and info work
-      - name: Podman machine init (macOS and Windows)
+      - name: Podman machine init
         run: |
           time podman machine init
+
+      - name: Podman machine start
+        run: |
           time podman machine start
 
       - name: Podman version
@@ -43,3 +46,12 @@ jobs:
       - name: Run BenchBuddy eth-node test
         run: |
           time podman run ghcr.io/nicenode/benchbuddy -r eth-node -f json
+
+      - name: Podman machine stop
+        run: |
+          time podman machine stop
+
+      # The reliability test
+      - name: Run BenchBuddy eth-node test
+        run: |
+          time ./reliabilty-mac.sh
