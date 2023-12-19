@@ -1,6 +1,10 @@
 name: Test
 
-on: [push, pull_request]
+on:
+  # push:
+  pull_request:
+    branches:
+      - never
 
 jobs:
   test:
@@ -22,12 +26,11 @@ jobs:
       #   with:
       #     node-version: 16
       #     cache: npm
-
       # msiexec /i .\podman-v4.4.1.msi /qn /lv .\log.txt
       #          Get-Content log.txt
-          #       echo ";C:\Program Files\Red Hat\Podman\" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          # $env:Path += ";C:\Program Files\Red Hat\Podman\"
-          # $env:Path
+      #       echo ";C:\Program Files\Red Hat\Podman\" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+      # $env:Path += ";C:\Program Files\Red Hat\Podman\"
+      # $env:Path
       # add to Start-Process? -WindowStyle Hidden
       # Windows try: https://github.com/actions/runner/issues/408
       # https://docs.github.com/en/actions/learn-github-actions/variables for GITHUB_PATH

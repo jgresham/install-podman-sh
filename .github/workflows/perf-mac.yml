@@ -1,0 +1,40 @@
+name: Test
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    timeout-minutes: 25
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [macos-latest]
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: install.sh Podman
+        run: |
+          ./install-mac.sh
+          echo "/opt/podman/bin" >> $GITHUB_PATH
+
+      # On macOS, podman machine init is required before version and info work
+      - name: Podman machine init (macOS and Windows)
+        run: |
+          podman machine init
+          podman machine start
+
+      - name: Podman version
+        run: |
+          podman.exe version
+
+      - name: Podman info
+        run: |
+          podman info
+
+      # - name: Podman run speedometer cpu
+      #   run: |
+      #     podman run ghcr.io/nicenode/speedometer -t time
