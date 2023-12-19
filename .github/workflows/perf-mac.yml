@@ -1,4 +1,4 @@
-name: Test
+name: Performance Test Mac
 
 on: [push, pull_request]
 
@@ -35,11 +35,11 @@ jobs:
         run: |
           podman info
 
-      - name: Podman run speedometer cpu
+      - name: Pull BenchBuddy
+        run: |
+          time podman pull ghcr.io/nicenode/benchbuddy
+
+      # The performance test
+      - name: Run BenchBuddy eth-node test
         run: |
           time podman run ghcr.io/nicenode/benchbuddy -r eth-node -f json
-
-      - name: uninstall.sh Podman
-        if: always()
-        run: |
-          ./uninstall-mac.sh
