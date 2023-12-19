@@ -20,7 +20,6 @@ jobs:
         run: |
           time ./install-mac.sh
           echo "/opt/podman/bin" >> $GITHUB_PATH
-          podman version
 
       # On macOS, podman machine init is required before version and info work
       - name: Podman machine init (macOS and Windows)
@@ -36,9 +35,9 @@ jobs:
         run: |
           podman info
 
-      # - name: Podman run speedometer cpu
-      #   run: |
-      #     podman run ghcr.io/nicenode/speedometer -t time
+      - name: Podman run speedometer cpu
+        run: |
+          time podman run ghcr.io/nicenode/benchbuddy -r eth-node -f json
 
       - name: uninstall.sh Podman
         if: always()
